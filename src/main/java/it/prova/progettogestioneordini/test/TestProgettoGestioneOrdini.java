@@ -21,9 +21,9 @@ public class TestProgettoGestioneOrdini {
 		CategoriaService categoriaServiceInstance = MyServiceFactory.getCategoriaServiceInstance();
 
 		try {
-			
+
 			TestClearAllTable(categoriaServiceInstance, articoloServiceInstance, ordineServiceInstance);
-			
+
 //			System.out.println("******* INIZIO TEST extra *******");
 //			caricaUltimiIDArticolo(articoloServiceInstance);
 //			System.out.println(articoloServiceInstance.caricaUltimoID().getId());
@@ -59,8 +59,7 @@ public class TestProgettoGestioneOrdini {
 //			System.out.println("In tabella Articolo ci sono " + articoloServiceInstance.listAll().size() + " elementi.");
 //			System.out.println("In tabella Categoria ci sono " + categoriaServiceInstance.listAll().size() + " elementi.");
 
-			// TestUltimoOrdineByCategoria(categoriaServiceInstance,
-			// articoloServiceInstance, ordineServiceInstance);
+			TestUltimoOrdineByCategoria(categoriaServiceInstance, articoloServiceInstance, ordineServiceInstance);
 
 //			TestIndirizziDistintiByStringaContenutaSerialeArticoli(articoloServiceInstance, ordineServiceInstance);
 
@@ -813,11 +812,8 @@ public class TestProgettoGestioneOrdini {
 		articoloServiceInstance.eliminaTutto();
 		ordineServiceInstance.eliminaTutto();
 		categoriaServiceInstance.eliminaTutto();
-		System.out.println(
-				".......TestClearAllTable fine: PASSED...........");
+		System.out.println(".......TestClearAllTable fine: PASSED...........");
 
 	}
-	
-	
-	
+
 }

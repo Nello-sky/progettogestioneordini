@@ -81,8 +81,11 @@ public class OrdineDAOImpl implements OrdineDAO {
 
 	@Override
 	public Ordine findLastBySpedizioneByCategoria(Long idCategoria) throws Exception {
+//		TypedQuery<Ordine> query = entityManager.createQuery(
+//				"select o from Ordine o join o.articoli a join a.categorie c where c.id = ?1 order by o.dataSpedizione desc ",
+//				Ordine.class);
 		TypedQuery<Ordine> query = entityManager.createQuery(
-				"select o from Ordine o join o.articoli a join a.categorie c where c.id = ?1 order by o.dataSpedizione desc ",
+				"select o from Ordine o join o.articoli a join a.categorie c where c.id = ?1 and o.dataSpedizione = (select max(o.dataSpedizione) from Ordine o) ",
 				Ordine.class);
 		query.setParameter(1, idCategoria);
 		return query.getResultStream().findFirst().orElse(null);
@@ -97,10 +100,10 @@ public class OrdineDAOImpl implements OrdineDAO {
 		return query.getResultList();
 	}
 
-	@Override    // test sulle righe orfane di artioolo
+	@Override // test sulle righe orfane di artioolo
 	public void deleteAll() throws Exception {
 		entityManager.createNativeQuery("delete from ordine").executeUpdate();
-		
+
 	}
 
 }
