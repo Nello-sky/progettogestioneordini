@@ -9,7 +9,7 @@ public class EntityManagerUtil {
 	private static final EntityManagerFactory entityManagerFactory;
 	static {
 		try {
-			entityManagerFactory = Persistence.createEntityManagerFactory("gestionesmartphoneapp_unit");
+			entityManagerFactory = Persistence.createEntityManagerFactory("gestioneprogettoordini_unit");
 
 		} catch (Throwable ex) {
 			System.err.println("Initial SessionFactory creation failed." + ex);
