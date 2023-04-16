@@ -95,4 +95,11 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public void deleteAll() throws Exception {
+		entityManager.createNativeQuery("delete from categoria").executeUpdate();
+
+		
+	}
+
 }

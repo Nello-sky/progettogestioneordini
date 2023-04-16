@@ -3,10 +3,9 @@ package it.prova.progettogestioneordini.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import it.prova.progettogestioneordini.model.Articolo;
-import it.prova.progettogestioneordini.model.Categoria;
 import it.prova.progettogestioneordini.model.Ordine;
 
 public class OrdineDAOImpl implements OrdineDAO {
@@ -74,7 +73,8 @@ public class OrdineDAOImpl implements OrdineDAO {
 		TypedQuery<Ordine> query = entityManager.createQuery(
 				"select o from Ordine o join o.articoli a join a.categorie c where c.id = ?1  ", Ordine.class);
 //		TypedQuery<Ordine> query = entityManager.createQuery(
-//				"select c.articoli.ordine from c.articoli a join a.ordine where c.id = ?1  ", Ordine.class);
+//				"select c.a.o from Categoria c join fetch c.articoli a join fetch a.ordine o where c.id = ?1  ",
+//				Ordine.class);
 		query.setParameter(1, idCategoria);
 		return query.getResultList();
 	}
@@ -95,6 +95,12 @@ public class OrdineDAOImpl implements OrdineDAO {
 				String.class);
 		query.setParameter(1, "%" + input + "%");
 		return query.getResultList();
+	}
+
+	@Override    // test sulle righe orfane di artioolo
+	public void deleteAll() throws Exception {
+		entityManager.createNativeQuery("delete from ordine").executeUpdate();
+		
 	}
 
 }

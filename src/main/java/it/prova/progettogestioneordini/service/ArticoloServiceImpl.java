@@ -285,4 +285,27 @@ public class ArticoloServiceImpl implements ArticoloService {
 		}
 	}
 
+	@Override
+	public void eliminaTutto() throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+		try {
+
+			entityManager.getTransaction().begin();
+
+			// injection
+			articoloDAO.setEntityManager(entityManager);
+
+			articoloDAO.deleteAll();
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+		
+	}
+
 }

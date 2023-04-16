@@ -25,5 +25,7 @@ public interface OrdineService {
 
 	List<String> trovaIndirizziDistinctOrdiniBySerialeOfArticoli(String input) throws Exception; // TESTED
 
+	void eliminaTutto() throws Exception;
+
 	void setOrdineDAO(OrdineDAO ordineDAO);
 }

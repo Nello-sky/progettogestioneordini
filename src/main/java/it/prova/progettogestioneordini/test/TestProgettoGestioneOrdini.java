@@ -21,7 +21,9 @@ public class TestProgettoGestioneOrdini {
 		CategoriaService categoriaServiceInstance = MyServiceFactory.getCategoriaServiceInstance();
 
 		try {
-
+			
+			TestClearAllTable(categoriaServiceInstance, articoloServiceInstance, ordineServiceInstance);
+			
 //			System.out.println("******* INIZIO TEST extra *******");
 //			caricaUltimiIDArticolo(articoloServiceInstance);
 //			System.out.println(articoloServiceInstance.caricaUltimoID().getId());
@@ -98,7 +100,7 @@ public class TestProgettoGestioneOrdini {
 			// TestSommaPrezziAricoliByDestinatario(articoloServiceInstance,
 			// ordineServiceInstance);
 
-			TestArticoliConOrdiniErrati(articoloServiceInstance, ordineServiceInstance);
+			// TestArticoliConOrdiniErrati(articoloServiceInstance, ordineServiceInstance);
 
 			System.out.println("******* INIZIO TEST CATEGORIA *******");
 //			System.out.println(
@@ -800,4 +802,22 @@ public class TestProgettoGestioneOrdini {
 		System.out.println(
 				".......TestArticoliConOrdiniErrati fine: PASSED......." + listaArticoliTest.toString() + " ....");
 	}
+
+	///////////////// some tests
+	///////////////// ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void TestClearAllTable(CategoriaService categoriaServiceInstance,
+			ArticoloService articoloServiceInstance, OrdineService ordineServiceInstance) throws Exception {
+
+		System.out.println(".......TestClearAllTable start.............");
+		articoloServiceInstance.eliminaTutto();
+		ordineServiceInstance.eliminaTutto();
+		categoriaServiceInstance.eliminaTutto();
+		System.out.println(
+				".......TestClearAllTable fine: PASSED...........");
+
+	}
+	
+	
+	
 }

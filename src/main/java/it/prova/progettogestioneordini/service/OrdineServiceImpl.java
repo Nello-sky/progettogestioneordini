@@ -206,4 +206,30 @@ public class OrdineServiceImpl implements OrdineService {
 		}
 	}
 
+	@Override
+	public void eliminaTutto() throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+		try {
+
+			entityManager.getTransaction().begin();
+
+			// injection
+			ordineDAO.setEntityManager(entityManager);
+
+//			if (ordineDAO.findByIdEager(idArticolo).getArticoli().size() > 0) {
+//				throw new OrdineAssociatoArticoloException("Warning: can't remove order linked to articles");
+//			}
+
+			ordineDAO.deleteAll();
+
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
 }

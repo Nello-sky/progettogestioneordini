@@ -103,4 +103,11 @@ public class ArticoloDAOImpl implements ArticoloDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public void deleteAll() throws Exception {
+		entityManager.createNativeQuery("delete from articolo_categoria").executeUpdate();
+		entityManager.createNativeQuery("delete from articolo").executeUpdate();
+		
+	}
+
 }

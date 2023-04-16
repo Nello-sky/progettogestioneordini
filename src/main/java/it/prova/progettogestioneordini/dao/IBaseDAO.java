@@ -22,5 +22,7 @@ public interface IBaseDAO<T> {
 	T findByIdEager(Long id) throws Exception;
 
 	T findLastId() throws Exception;
+	
+	void deleteAll() throws Exception;
 
 }

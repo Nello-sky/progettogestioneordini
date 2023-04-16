@@ -32,5 +32,7 @@ public interface ArticoloService {
 
 	List<Articolo> trovaByOrdineError() throws Exception; // TESTED
 
+	void eliminaTutto() throws Exception;
+
 	void setArticoloDAO(ArticoloDAO articoloDAO);
 }

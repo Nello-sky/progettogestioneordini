@@ -27,6 +27,8 @@ public interface CategoriaService {
 	List<Categoria> categorieDistinteDaOrdine(Long idOrdine) throws Exception; // TESTED
 
 	List<String> codiciCategorieDistinteDaDataOrdine(int mese, int anno) throws Exception; // TESTED
+	
+	void eliminaTutto() throws Exception;
 
 	void setCategoriaDAO(CategoriaDAO categoriaoDAO);
 }
